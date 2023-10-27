@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+    <head>
+      <title> Hangman! </title>
+      <style>
+        #alphabet { margin: auto;
+                   padding: 20px; }
+        #word { margin: auto;
+               font: 400em serif bold;
+               padding: 20px; }
+        #info { padding: 20px;
+               font-color: red;
+               background-color: yellow; }
+      </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <script>
+        $(document).ready( function() {
+          // this is the secrect word!!! change here
+          word = "s u r v i v a l";
+          blank = "_ _ _ _ _ _ _ _";
+          $("#word").text(blank);
+
+          //list of tried letters
+          triedLetters = "";
+
+          //number of tries left
+          tries = 10;
+          $("guesses").text("Guesses left: "+tries);
+
+          //boolean variable to track game win or lose
+          gameWon = false;
+          gameLost = false;
+
+          // when a user clicks on letter this is function for that
+          $(".letter").click( function() {
+
+          // this checks if game is won or lost
+            if (gameWon != true && gameLost != true) {
+
+          //erase the info box
+
+          //use text to get the letter clicked on
+
+          //make a line through the picked letter
+
+          //letter picked has already been tried
+            if (triedLetters.includes(letter)) {
+
+          //letter is not in word reduce number of tries
+            }
+              else if (! word.includes(letter)) {
+
+          //reduce number of tries by 1
+          //out of tries, then lost
+          //otherwise crossout letter
+          //add to found letters
+          //check if player won
+              } else {
+
+          //replace blankes in blank variable with letter clicked on
+          //replace blankes with letter in blank and replace letters with blanks
+          //check if player won
+
+              }
+          //add letter to letters tried
+
+            }
+          });
+          //
+        });
+
+      </script>
+    </head>
+  <body>
+    <h1> Let's Play Hangman!!</h1>
+    <div id="guesses"></div>
+    <div id="info"></div>
+    <div id="word"></div>
+    <div id="alaphabet"><p>Click to make a guess!</p>
+      <span class="letter" id="a">a</span>
+      <span class="letter" id="b">b</span>
+      <span class="letter" id="c">c</span>
+      <span class="letter" id="d">d</span>
+      <span class="letter" id="e">e</span>
+      <span class="letter" id="f">f</span>
+      <span class="letter" id="g">g</span>
+      <span class="letter" id="h">h</span>
+      <span class="letter" id="i">i</span>
+      <span class="letter" id="j">j</span>
+      <span class="letter" id="k">k</span>
+      <span class="letter" id="l">l</span>
+      <span class="letter" id="m">m</span>
+      <span class="letter" id="n">n</span>
+      <span class="letter" id="o">o</span>
+      <span class="letter" id="p">p</span>
+      <span class="letter" id="q">q</span>
+      <span class="letter" id="r">r</span>
+      <span class="letter" id="s">s</span>
+      <span class="letter" id="t">t</span>
+      <span class="letter" id="u">u</span>
+      <span class="letter" id="v">v</span>
+      <span class="letter" id="w">w</span>
+      <span class="letter" id="x">x</span>
+      <span class="letter" id="y">y</span>
+      <span class="letter" id="z">z</span>
+    </div>
+  </body>
+</html>
