@@ -38,20 +38,33 @@
             if (gameWon != true && gameLost != true) {
 
           //erase the info box
-
+          $("#info").text("");
+                
           //use text to get the letter clicked on
-
+          letter = $(this).text();
+                console.log("clicked on ", letter);
+                   
           //make a line through the picked letter
+          $(this).css("text-decoration", "line-through");
 
           //letter picked has already been tried
             if (triedLetters.includes(letter)) {
+              $("#info").text("Letter "+letter+" already tried. ");    
 
-          //letter is not in word reduce number of tries
+          //if letter is not in word reduce number of tries and check if game lost
+                
             }
               else if (! word.includes(letter)) {
 
           //reduce number of tries by 1
+          tries = tries - 1
+          $("#guesses").text("Guesses left: "+tries);
+                  
           //out of tries, then lost
+          if (tries < 1) {
+             gameLost = true;
+             $("#info").text("Sorry, you're out of guesses. WahWah You Lost!");
+          }
           //otherwise crossout letter
           //add to found letters
           //check if player won
@@ -59,10 +72,26 @@
 
           //replace blankes in blank variable with letter clicked on
           //replace blankes with letter in blank and replace letters with blanks
+          while (word.includes(letter)) {
+              index = word.indexOf(letter);
+              console.log("index of word is ", index);
+              word = word.substring(0, index) + " " + word.substring((index + 1));
+              blank = blank.substring(0, index) + letter +  blank.substring((index + 1));
+
+              $("#word").text(blank);
+              console.log("word is ", word);
+              console.log("blank is ", blank);
+          }
           //check if player won
+          if (! blank.includes("-"))  {
+           gameWon = true;
+           $("#info").text("You WON!!! Congratulations!!");
+          
 
               }
           //add letter to letters tried
+          triedLetters = triedLetters + letter;
+          console.log("triedLetters is ", triedLetters);
 
             }
           });
